@@ -6,4 +6,35 @@
     android:layout_height="match_parent"
     tools:context="com.mojzesze.hackathonlublin2017.WeatherActivity">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Temperatura: "
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="78dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="temp"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="78dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Opady:"
+        tools:layout_editor_absoluteX="99dp"
+        tools:layout_editor_absoluteY="136dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="rain"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="136dp" />
 </android.support.constraint.ConstraintLayout>
