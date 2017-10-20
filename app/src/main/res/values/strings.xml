@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">HackathonLublin2017</string>
+    <string name="title_activity_map">Map</string>
+    <string name="check_best_transport">Obadaj transport</string>
+</resources>
