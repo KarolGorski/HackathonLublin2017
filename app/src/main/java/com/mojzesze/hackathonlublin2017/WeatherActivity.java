@@ -1,66 +1,98 @@
 package com.mojzesze.hackathonlublin2017;
 
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
+import org.json.JSONObject;
+
+
 import java.io.BufferedReader;
-import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
+import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class WeatherActivity extends AppCompatActivity {
 
-    float temperature = 0;
-    float rain = 0;
-
-
+    float temperature;
+    float rain;
+    String temp;
+    String rainString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
 
-        URL temperatureURL = null;
-        try {
-            temperatureURL = new URL("http://212.182.4.252/data.php?s=16");
-
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(temperatureURL.openStream()));
-        String inputLine;
-        while ((inputLine = in.readLine()) != null){
-            if(inputLine.contains("temperatureInt:")){
-                String[] splittedLine = inputLine.split(" ");
-
-                String temp = splittedLine[1].substring(0, 5);
-
-                temperature = Float.parseFloat(temp);
-            }
-            if(inputLine.contains("rainCumInt:")) {
-                String[] splittedLine = inputLine.split(" ");
-
-                String rainCumInt = splittedLine[1].substring(0, 4);
-
-                rain = Float.parseFloat(rainCumInt);
-            }
-        }
-        in.close();
-
-        TextView tempElement = (TextView) findViewById(R.id.textView2);
-        TextView rainElement = (TextView) findViewById(R.id.textView4);
-
-        Log.d("xd", temperature+" "+rain);
-
-        tempElement.setText((int) temperature + " C");
-        rainElement.setText((int) rain + " mm");
-        } catch (Exception e) {
-            e.printStackTrace();
-            Log.d("xd", "error");
-        }
-
+        new URLLoader().execute("http://212.182.4.252/data.php?s=16");
     }
+
+    public void goToRoute(View v) {
+        Intent intent = new Intent(WeatherActivity.this, FindRoute.class);
+        startActivity(intent);
+    }
+
+
+    private class URLLoader extends AsyncTask<String, Void, String> {
+
+
+        @Override
+        protected String doInBackground(String... urls) {
+            HttpURLConnection urlConnection;
+            try {
+                urlConnection = (HttpURLConnection) ((new URL(urls[0]).openConnection()));
+                urlConnection.setRequestMethod("GET");
+                urlConnection.setDoInput(true);
+                urlConnection.connect();
+
+                InputStream stream = urlConnection.getInputStream();
+
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), "UTF-8"));
+                StringBuilder sb = new StringBuilder();
+                String inputLine;
+                while((inputLine = bufferedReader.readLine()) != null){
+                    sb.append(inputLine);
+                }
+
+                JSONObject json = new JSONObject(sb.toString());
+
+                temp = json.getString("temperatureInt");
+                rainString = json.getString("rainCumInt");
+
+                Log.d("xd", temp + " " + rainString);
+
+                temperature = Float.valueOf(temp);
+                rain = Float.valueOf(rainString);
+
+
+                stream.close();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            TextView tempElement = (TextView) findViewById(R.id.textView2);
+            TextView rainElement = (TextView) findViewById(R.id.textView4);
+
+            tempElement.setText( temperature + " C");
+            rainElement.setText( rain + " mm");
+
+            Log.d("xdd", temperature + " " + rain);
+        }
+    }
+
+
 
 
 }
