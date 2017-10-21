@@ -51,6 +51,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
     private List<Marker> originMarkers = new ArrayList<>();
     private List<Marker> destinationMarkers = new ArrayList<>();
     private List<Polyline> polylinePaths = new ArrayList<>();
+    public static String destination;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +97,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
 
     private void sendRequest(){
         EditText destinationEditText = (EditText) findViewById(R.id.addressEditText);
-        String destination = destinationEditText.getText().toString();
+        destination = destinationEditText.getText().toString();
         if (destination.isEmpty()){
             Toast.makeText(getApplicationContext(), "Please enter some address", Toast.LENGTH_SHORT).show();
             return;
@@ -118,7 +119,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-
     }
     @Override
     public void onMapReady(GoogleMap googleMap) {
