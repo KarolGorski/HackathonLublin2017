@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.json.JSONObject;
@@ -31,10 +32,15 @@ public class WeatherActivity extends Activity {
         setContentView(R.layout.activity_weather);
 
         new URLLoader().execute("http://212.182.4.252/data.php?s=16");
+        String URLmpk = "http://www.mpk.lublin.pl/index.php?s=rozklady";
     }
 
     public void goToRoute(View v) {
         Intent intent = new Intent(WeatherActivity.this, FindRoute.class);
+        startActivity(intent);
+    }
+    public void goToWeb(View v){
+        Intent intent = new Intent(WeatherActivity.this, WebActivity.class);
         startActivity(intent);
     }
 
@@ -86,6 +92,8 @@ public class WeatherActivity extends Activity {
             TextView tempElement = (TextView) findViewById(R.id.tempView);
             TextView rainElement = (TextView) findViewById(R.id.rainView);
             TextView notification = (TextView) findViewById(R.id.notify);
+            Button buttonBike = (Button) findViewById(R.id.bikeButton);
+            Button buttonMPK = (Button) findViewById(R.id.webButton);
 
             tempElement.setText( temperature + " C");
             rainElement.setText( rain + " mm");
@@ -94,8 +102,13 @@ public class WeatherActivity extends Activity {
 
             if(rain >0 || temperature < 10){
                 notification.setText("Pogoda nie dopisuje, zalecamy jazdę autobusem");
+                buttonBike.setText("Mimo to chcę pojechać rowerem.");
+
             } else {
                 notification.setText("Pogoda idealna na rower");
+
+                buttonMPK.setText("Mimo dobrej pogody chcę zobaczyć rozkład MPK Lublin");
+
             }
         }
     }
