@@ -40,7 +40,7 @@ public class DirectionFinder {
     private String createUrl() throws UnsupportedEncodingException {
         //String urlOrigin = URLEncoder.encode(origin, "utf-8");
         //String urlDestination = URLEncoder.encode(destination, "utf-8");
-        String url = DIRECTION_URL_API + "origin=" + origin + "&destination=" + destination + "&key=" + GOOGLE_API_KEY;
+        String url = DIRECTION_URL_API + "origin=" + origin + "&destination=" + destination.trim() + ".Lublin" + "&key=" + GOOGLE_API_KEY;
         return url;
     }
 

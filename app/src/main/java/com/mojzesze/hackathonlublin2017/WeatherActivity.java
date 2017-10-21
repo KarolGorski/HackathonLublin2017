@@ -1,5 +1,6 @@
 package com.mojzesze.hackathonlublin2017;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +18,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class WeatherActivity extends AppCompatActivity {
+public class WeatherActivity extends Activity {
 
     float temperature;
     float rain;

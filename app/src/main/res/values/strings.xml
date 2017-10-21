@@ -4,4 +4,5 @@
     <string name="check_best_transport">Obadaj transport</string>
     <string name="find_route">Znajdz drogę</string>
     <string name="Address">Adres</string>
+    <string name="routeViewTitle">Najbliższa stacja rowerowa:</string>
 </resources>
