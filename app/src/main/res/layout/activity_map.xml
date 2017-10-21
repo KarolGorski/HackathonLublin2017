@@ -27,5 +27,6 @@
         android:layout_marginBottom="0dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.945" />
+        app:layout_constraintHorizontal_bias="0.945"
+        android:onClick="goToWeather"/>
 </android.support.constraint.ConstraintLayout>

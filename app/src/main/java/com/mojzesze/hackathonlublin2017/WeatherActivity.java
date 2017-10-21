@@ -2,6 +2,7 @@ package com.mojzesze.hackathonlublin2017;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -17,8 +18,15 @@ public class WeatherActivity extends AppCompatActivity {
 
 
 
-    public WeatherActivity() throws IOException {
-        URL temperatureURL = new URL("http://212.182.4.252/data.php?s=16");
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_weather);
+
+        URL temperatureURL = null;
+        try {
+            temperatureURL = new URL("http://212.182.4.252/data.php?s=16");
+
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(temperatureURL.openStream()));
         String inputLine;
@@ -40,20 +48,17 @@ public class WeatherActivity extends AppCompatActivity {
         }
         in.close();
 
-
-
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_weather);
-
         TextView tempElement = (TextView) findViewById(R.id.textView2);
         TextView rainElement = (TextView) findViewById(R.id.textView4);
 
+        Log.d("xd", temperature+" "+rain);
+
         tempElement.setText((int) temperature + " C");
         rainElement.setText((int) rain + " mm");
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.d("xd", "error");
+        }
 
     }
 
