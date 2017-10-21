@@ -107,7 +107,11 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
             return;
         }*/
         try {
-            new DirectionFinder(this, mLast.latitude + "," + mLast.longitude, destination).execute();
+            if (mLastLocation == null){
+                new DirectionFinder(this, mLast.latitude + "," + mLast.longitude, destination).execute();
+            } else {
+                new DirectionFinder(this, mLastLocation.getLatitude()+ "," + mLastLocation.getLongitude(), destination).execute();
+            }
         } catch (SecurityException e){
             e.printStackTrace();
         }
