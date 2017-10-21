@@ -25,7 +25,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ab50b46f-2ae6-4bef-8076-88fd9a4b4ed0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/mojzesze/hackathonlublin2017/MapActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/mojzesze/hackathonlublin2017/MapActivity.java" />
     </list>
     <ignored path="HackathonLublin2017.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -2618,7 +2617,14 @@
       <option name="project" value="LOCAL" />
       <updated>1508587722644</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="location fixed">
+      <created>1508591072851</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1508591072851</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2673,7 +2679,8 @@
     <MESSAGE value="SSAJCIE PALY&#10;UBOJNIA AUUUUUUUU" />
     <MESSAGE value="hehehe, wyjebany znacznik sydney" />
     <MESSAGE value="fixed adress" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed adress" />
+    <MESSAGE value="location fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="location fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
