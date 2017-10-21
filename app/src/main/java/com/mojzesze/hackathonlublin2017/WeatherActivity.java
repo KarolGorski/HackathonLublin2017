@@ -2,12 +2,14 @@ package com.mojzesze.hackathonlublin2017;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.json.JSONObject;
@@ -94,7 +96,8 @@ public class WeatherActivity extends Activity {
             TextView notification = (TextView) findViewById(R.id.notify);
             Button buttonBike = (Button) findViewById(R.id.bikeButton);
             Button buttonMPK = (Button) findViewById(R.id.webButton);
-
+            ImageView imageView= (ImageView) findViewById(R.id.obrazkiPogody);
+           // imageView.setImageDrawable(getResources().getDrawable(R.drawable.burza));
             tempElement.setText( temperature + " C");
             rainElement.setText( rain + " mm");
 
@@ -103,8 +106,11 @@ public class WeatherActivity extends Activity {
             if(rain >0 || temperature < 10){
                 notification.setText("Pogoda nie dopisuje, zalecamy jazdę autobusem");
                 buttonBike.setText("Mimo to chcę pojechać rowerem.");
-
+                if(rain>0) imageView.setImageDrawable(getResources().getDrawable(R.drawable.deszcz));
+                if(rain>70) imageView.setImageDrawable(getResources().getDrawable(R.drawable.burza));
+                if(rain>0 && temperature <0) imageView.setImageDrawable(getResources().getDrawable(R.drawable.snieg));
             } else {
+                if(temperature>16) imageView.setImageDrawable(getResources().getDrawable(R.drawable.slonce));
                 notification.setText("Pogoda idealna na rower");
 
                 buttonMPK.setText("Mimo dobrej pogody chcę zobaczyć rozkład MPK Lublin");
