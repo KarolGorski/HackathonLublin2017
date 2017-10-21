@@ -82,13 +82,20 @@ public class WeatherActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String s) {
-            TextView tempElement = (TextView) findViewById(R.id.textView2);
-            TextView rainElement = (TextView) findViewById(R.id.textView4);
+            TextView tempElement = (TextView) findViewById(R.id.tempView);
+            TextView rainElement = (TextView) findViewById(R.id.rainView);
+            TextView notification = (TextView) findViewById(R.id.notify);
 
             tempElement.setText( temperature + " C");
             rainElement.setText( rain + " mm");
 
             Log.d("xdd", temperature + " " + rain);
+
+            if(rain >0 || temperature < 10){
+                notification.setText("Pogoda nie dopisuje, zalecamy jazdę autobusem");
+            } else {
+                notification.setText("Pogoda idealna na rower");
+            }
         }
     }
 
